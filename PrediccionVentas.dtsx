@@ -1,0 +1,1092 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/26/2025 1:20:58 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CRUZJEFF225"
+  DTS:CreatorName="CRUZJEFF225\Jefferson Cruz"
+  DTS:DTSID="{180AB66C-6B96-4A82-BE7A-BDADCCB43DFF}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="PrediccionVentas"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{315B01FF-6973-4EA7-B344-FC51BC9DE4EA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CRUZJEFF225.DestinationETL]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{5DD08196-F782-41E6-9979-1D9AA087C6A3}"
+      DTS:ObjectName="CRUZJEFF225.DestinationETL">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=CRUZJEFF225;Initial Catalog=DestinationETL;Provider=MSOLEDBSQL19.1;Integrated Security=SSPI;Application Name=SSIS-PrediccionVentas-{5DD08196-F782-41E6-9979-1D9AA087C6A3}CRUZJEFF225.DestinationETL;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\PrediccionVentasDTF"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0811F0C6-1ABB-4A0A-8906-CC9A5D53E66E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="PrediccionVentasDTF"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\PrediccionVentasDTF\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\PrediccionVentasDTF\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\PrediccionVentasDTF\Derived Column.Inputs[Derived Column Input].Columns[PromotionName]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="PromotionName"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[PromotionName]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[PromotionName]}) ? "Sin Definir" : #{Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[PromotionName]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(PromotionName) ? "Sin Definir" : PromotionName</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\PrediccionVentasDTF\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\PrediccionVentasDTF\Derived Column.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\PrediccionVentasDTF\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\PrediccionVentasDTF\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\PrediccionVentasDTF\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\PrediccionVentasDTF\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\PrediccionVentasDTF\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FactVentasProcesadas]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\PrediccionVentasDTF\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CRUZJEFF225.DestinationETL]"
+                  connectionManagerRefId="Package.ConnectionManagers[CRUZJEFF225.DestinationETL]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SalesKey]"
+                      cachedDataType="i4"
+                      cachedName="SalesKey"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SalesKey]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesKey]" />
+                    <inputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DateKey]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DateKey"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateKey]" />
+                    <inputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FullDateLabel]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="FullDateLabel"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FullDateLabel]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[FullDateLabel]" />
+                    <inputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CalendarYear]"
+                      cachedDataType="i4"
+                      cachedName="CalendarYear"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CalendarYear]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[CalendarYear]" />
+                    <inputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CalendarMonth]"
+                      cachedDataType="i4"
+                      cachedName="CalendarMonth"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CalendarMonth]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[CalendarMonth]" />
+                    <inputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CalendarQuarter]"
+                      cachedDataType="i4"
+                      cachedName="CalendarQuarter"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CalendarQuarter]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[CalendarQuarter]" />
+                    <inputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StoreKey]"
+                      cachedDataType="i4"
+                      cachedName="StoreKey"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StoreKey]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoreKey]" />
+                    <inputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StoreName]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="StoreName"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StoreName]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoreName]" />
+                    <inputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CityName]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="CityName"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CityName]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityName]" />
+                    <inputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StateProvinceName]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="StateProvinceName"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceName]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[StateProvinceName]" />
+                    <inputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ProductKey]"
+                      cachedDataType="i4"
+                      cachedName="ProductKey"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductKey]" />
+                    <inputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="500"
+                      cachedName="ProductName"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductName]" />
+                    <inputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BrandName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="BrandName"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BrandName]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[BrandName]" />
+                    <inputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ClassName]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="ClassName"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ClassName]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[ClassName]" />
+                    <inputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PromotionKey]"
+                      cachedDataType="i4"
+                      cachedName="PromotionKey"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PromotionKey]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[PromotionKey]" />
+                    <inputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PromotionName]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="PromotionName"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PromotionName]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[PromotionName]" />
+                    <inputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DiscountPercent]"
+                      cachedDataType="r8"
+                      cachedName="DiscountPercent"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DiscountPercent]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[DiscountPercent]" />
+                    <inputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SalesQuantity]"
+                      cachedDataType="i4"
+                      cachedName="SalesQuantity"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SalesQuantity]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesQuantity]" />
+                    <inputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SalesAmount]"
+                      cachedDataType="cy"
+                      cachedName="SalesAmount"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SalesAmount]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesAmount]" />
+                    <inputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TotalCost]"
+                      cachedDataType="cy"
+                      cachedName="TotalCost"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalCost]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalCost]" />
+                    <inputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[UnitPrice]"
+                      cachedDataType="cy"
+                      cachedName="UnitPrice"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[UnitPrice]" />
+                    <inputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[UnitCost]"
+                      cachedDataType="cy"
+                      cachedName="UnitCost"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UnitCost]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[UnitCost]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SalesKey]"
+                      dataType="i4"
+                      name="SalesKey" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      dataType="dbTimeStamp"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FullDateLabel]"
+                      dataType="wstr"
+                      length="20"
+                      name="FullDateLabel" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CalendarYear]"
+                      dataType="i4"
+                      name="CalendarYear" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CalendarMonth]"
+                      dataType="i4"
+                      name="CalendarMonth" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CalendarQuarter]"
+                      dataType="i4"
+                      name="CalendarQuarter" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StoreKey]"
+                      dataType="i4"
+                      name="StoreKey" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StoreName]"
+                      dataType="wstr"
+                      length="100"
+                      name="StoreName" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CityName]"
+                      dataType="wstr"
+                      length="100"
+                      name="CityName" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceName]"
+                      dataType="wstr"
+                      length="100"
+                      name="StateProvinceName" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                      dataType="i4"
+                      name="ProductKey" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                      dataType="wstr"
+                      length="500"
+                      name="ProductName" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[BrandName]"
+                      dataType="wstr"
+                      length="50"
+                      name="BrandName" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ClassName]"
+                      dataType="wstr"
+                      length="20"
+                      name="ClassName" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PromotionKey]"
+                      dataType="i4"
+                      name="PromotionKey" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PromotionName]"
+                      dataType="wstr"
+                      length="100"
+                      name="PromotionName" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DiscountPercent]"
+                      dataType="r8"
+                      name="DiscountPercent" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SalesQuantity]"
+                      dataType="i4"
+                      name="SalesQuantity" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SalesAmount]"
+                      dataType="cy"
+                      name="SalesAmount" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalCost]"
+                      dataType="cy"
+                      name="TotalCost" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
+                      dataType="cy"
+                      name="UnitPrice" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UnitCost]"
+                      dataType="cy"
+                      name="UnitCost" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\PrediccionVentasDTF\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\PrediccionVentasDTF\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT * FROM vw_VentasConDimensiones</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\PrediccionVentasDTF\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{6B8EDAC8-EA5A-47E5-B77C-43AB1C9DCF4E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CRUZJEFF225.Spanish 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalesKey]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesKey]"
+                      name="SalesKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      name="DateKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[FullDateLabel]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FullDateLabel]"
+                      length="20"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[FullDateLabel]"
+                      name="FullDateLabel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[CalendarYear]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CalendarYear]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[CalendarYear]"
+                      name="CalendarYear"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[CalendarMonth]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CalendarMonth]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[CalendarMonth]"
+                      name="CalendarMonth"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[CalendarQuarter]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CalendarQuarter]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[CalendarQuarter]"
+                      name="CalendarQuarter"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoreKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StoreKey]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoreKey]"
+                      name="StoreKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoreName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StoreName]"
+                      length="100"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[StoreName]"
+                      name="StoreName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CityName]"
+                      length="100"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityName]"
+                      name="CityName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[StateProvinceName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StateProvinceName]"
+                      length="100"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[StateProvinceName]"
+                      name="StateProvinceName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductKey]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductKey]"
+                      name="ProductKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                      length="500"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductName]"
+                      name="ProductName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[BrandName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BrandName]"
+                      length="50"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[BrandName]"
+                      name="BrandName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[ClassName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ClassName]"
+                      length="20"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[ClassName]"
+                      name="ClassName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[PromotionKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PromotionKey]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[PromotionKey]"
+                      name="PromotionKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[PromotionName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PromotionName]"
+                      length="100"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[PromotionName]"
+                      name="PromotionName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[DiscountPercent]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DiscountPercent]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[DiscountPercent]"
+                      name="DiscountPercent"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesQuantity]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalesQuantity]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesQuantity]"
+                      name="SalesQuantity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesAmount]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalesAmount]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesAmount]"
+                      name="SalesAmount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalCost]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalCost]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalCost]"
+                      name="TotalCost"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                      name="UnitPrice"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[UnitCost]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[UnitCost]"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].Columns[UnitCost]"
+                      name="UnitCost"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalesKey]"
+                      dataType="i4"
+                      name="SalesKey" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      dataType="dbTimeStamp"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FullDateLabel]"
+                      dataType="wstr"
+                      length="20"
+                      name="FullDateLabel" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CalendarYear]"
+                      dataType="i4"
+                      name="CalendarYear" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CalendarMonth]"
+                      dataType="i4"
+                      name="CalendarMonth" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CalendarQuarter]"
+                      dataType="i4"
+                      name="CalendarQuarter" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StoreKey]"
+                      dataType="i4"
+                      name="StoreKey" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StoreName]"
+                      dataType="wstr"
+                      length="100"
+                      name="StoreName" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CityName]"
+                      dataType="wstr"
+                      length="100"
+                      name="CityName" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StateProvinceName]"
+                      dataType="wstr"
+                      length="100"
+                      name="StateProvinceName" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductKey]"
+                      dataType="i4"
+                      name="ProductKey" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                      dataType="wstr"
+                      length="500"
+                      name="ProductName" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BrandName]"
+                      dataType="wstr"
+                      length="50"
+                      name="BrandName" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ClassName]"
+                      dataType="wstr"
+                      length="20"
+                      name="ClassName" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PromotionKey]"
+                      dataType="i4"
+                      name="PromotionKey" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PromotionName]"
+                      dataType="wstr"
+                      length="100"
+                      name="PromotionName" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DiscountPercent]"
+                      dataType="r8"
+                      name="DiscountPercent" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalesQuantity]"
+                      dataType="i4"
+                      name="SalesQuantity" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalesAmount]"
+                      dataType="cy"
+                      name="SalesAmount" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalCost]"
+                      dataType="cy"
+                      name="TotalCost" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                      dataType="cy"
+                      name="UnitPrice" />
+                    <externalMetadataColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[UnitCost]"
+                      dataType="cy"
+                      name="UnitCost" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalesKey]"
+                      dataType="i4"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalesKey]"
+                      name="SalesKey" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      name="DateKey" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FullDateLabel]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FullDateLabel]"
+                      name="FullDateLabel" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CalendarYear]"
+                      dataType="i4"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CalendarYear]"
+                      name="CalendarYear" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CalendarMonth]"
+                      dataType="i4"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CalendarMonth]"
+                      name="CalendarMonth" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CalendarQuarter]"
+                      dataType="i4"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CalendarQuarter]"
+                      name="CalendarQuarter" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StoreKey]"
+                      dataType="i4"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StoreKey]"
+                      name="StoreKey" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StoreName]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StoreName]"
+                      name="StoreName" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CityName]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CityName]"
+                      name="CityName" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StateProvinceName]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StateProvinceName]"
+                      name="StateProvinceName" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProductKey]"
+                      dataType="i4"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProductKey]"
+                      name="ProductKey" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                      dataType="wstr"
+                      length="500"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                      name="ProductName" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BrandName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BrandName]"
+                      name="BrandName" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ClassName]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ClassName]"
+                      name="ClassName" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PromotionKey]"
+                      dataType="i4"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PromotionKey]"
+                      name="PromotionKey" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PromotionName]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PromotionName]"
+                      name="PromotionName" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DiscountPercent]"
+                      dataType="r8"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DiscountPercent]"
+                      name="DiscountPercent" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalesQuantity]"
+                      dataType="i4"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalesQuantity]"
+                      name="SalesQuantity" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalesAmount]"
+                      dataType="cy"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalesAmount]"
+                      name="SalesAmount" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalCost]"
+                      dataType="cy"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalCost]"
+                      name="TotalCost" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                      dataType="cy"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                      name="UnitPrice" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UnitCost]"
+                      dataType="cy"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[UnitCost]"
+                      name="UnitCost" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\PrediccionVentasDTF.Paths[Derived Column Output]"
+              endId="Package\PrediccionVentasDTF\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\PrediccionVentasDTF\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\PrediccionVentasDTF.Paths[OLE DB Source Output]"
+              endId="Package\PrediccionVentasDTF\Derived Column.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\PrediccionVentasDTF\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="178,42"
+          Id="Package\PrediccionVentasDTF"
+          TopLeft="385,126" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\PrediccionVentasDTF">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\PrediccionVentasDTF\OLE DB Source"
+          TopLeft="426,46" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\PrediccionVentasDTF\OLE DB Destination"
+          TopLeft="419,229" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\PrediccionVentasDTF\Derived Column"
+          TopLeft="431,155" />
+        <EdgeLayout
+          Id="Package\PrediccionVentasDTF.Paths[OLE DB Source Output]"
+          TopLeft="504.5,88">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,67"
+              Start="0,0"
+              End="0,59.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\PrediccionVentasDTF.Paths[Derived Column Output]"
+          TopLeft="506.25,197">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\PrediccionVentasDTF\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\PrediccionVentasDTF\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

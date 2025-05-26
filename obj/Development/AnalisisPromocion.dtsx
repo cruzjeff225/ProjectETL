@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="31"
-  DTS:VersionGUID="{0BE49E82-FB9D-4B43-BA36-EC4C175AAB8E}">
+  DTS:VersionBuild="36"
+  DTS:VersionGUID="{AD266950-EEBC-41D9-84B0-5A68D07ED357}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -44,13 +44,13 @@
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Data Flow Task"
+      DTS:refId="Package\ImpactoPromocionesDTF"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
       DTS:DTSID="{017C3F75-17BB-4E23-96DE-A5DF8AFE076B}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Data Flow Task"
+      DTS:ObjectName="ImpactoPromocionesDTF"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -58,7 +58,109 @@
           version="1">
           <components>
             <component
-              refId="Package\Data Flow Task\BD DestinationETL Detalles"
+              refId="Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num)"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Año y Mes Especifico (Num)"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Inputs[Derived Column Input].Columns[CalendarMonth]"
+                      cachedDataType="i4"
+                      cachedName="CalendarMonth"
+                      lineageId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[CalendarMonth]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Anio]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Anio]"
+                      name="Anio"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[CalendarMonth]} / 100</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">CalendarMonth / 100</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]"
+                      name="Mes"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[CalendarMonth]} % 100</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">CalendarMonth % 100</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
@@ -115,7 +217,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\BD DestinationETL Detalles.Connections[OleDbConnection]"
+                  refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[CRUZJEFF225.DestinationETL]"
                   connectionManagerRefId="Package.ConnectionManagers[CRUZJEFF225.DestinationETL]"
                   description="The OLE DB runtime connection used to access the database."
@@ -123,194 +225,194 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input]"
+                  refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[SalesKey]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[SalesKey]"
                       cachedDataType="i4"
                       cachedName="SalesKey"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[SalesKey]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[SalesKey]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[SalesKey]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[SalesKey]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[DateKey]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[DateKey]"
                       cachedDataType="dbTimeStamp"
                       cachedName="DateKey"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[DateKey]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[DateKey]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[ProductKey]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[ProductKey]"
                       cachedDataType="i4"
                       cachedName="ProductKey"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[ProductKey]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[ProductKey]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[PromotionKey]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[PromotionKey]"
                       cachedDataType="i4"
                       cachedName="PromotionKey"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[PromotionKey]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[PromotionKey]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[PromotionKey]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[PromotionKey]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[ChannelKey]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[ChannelKey]"
                       cachedDataType="i4"
                       cachedName="ChannelKey"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[ChannelKey]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[ChannelKey]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[ChannelKey]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[ChannelKey]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[SalesQuantity]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[SalesQuantity]"
                       cachedDataType="i4"
                       cachedName="SalesQuantity"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[SalesQuantity]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[SalesQuantity]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[SalesQuantity]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[SalesQuantity]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[DiscountAmount]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[DiscountAmount]"
                       cachedDataType="cy"
                       cachedName="DiscountAmount"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[DiscountAmount]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[DiscountAmount]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[DiscountAmount]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[DiscountAmount]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[SalesAmount]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[SalesAmount]"
                       cachedDataType="cy"
                       cachedName="SalesAmount"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[SalesAmount]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[SalesAmount]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[SalesAmount]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[SalesAmount]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[UnitPrice]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[UnitPrice]"
                       cachedDataType="cy"
                       cachedName="UnitPrice"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[UnitPrice]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[UnitPrice]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[UnitCost]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[UnitCost]"
                       cachedDataType="cy"
                       cachedName="UnitCost"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[UnitCost]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[UnitCost]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[UnitCost]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[UnitCost]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[PromotionName]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[PromotionName]"
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="PromotionName"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[PromotionName]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[PromotionName]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[PromotionName]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[PromotionName]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[DiscountPercent]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[DiscountPercent]"
                       cachedDataType="r8"
                       cachedName="DiscountPercent"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[DiscountPercent]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[DiscountPercent]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[DiscountPercent]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[DiscountPercent]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[PromotionCategory]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[PromotionCategory]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="PromotionCategory"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[PromotionCategory]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[PromotionCategory]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[PromotionCategory]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[PromotionCategory]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[FullDateLabel]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[FullDateLabel]"
                       cachedDataType="wstr"
                       cachedLength="20"
                       cachedName="FullDateLabel"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[FullDateLabel]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[FullDateLabel]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[FullDateLabel]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[FullDateLabel]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[ProductName]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[ProductName]"
                       cachedDataType="wstr"
                       cachedLength="500"
                       cachedName="ProductName"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[ProductName]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[ProductName]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[BrandName]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[BrandName]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="BrandName"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[BrandName]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[BrandName]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[BrandName]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[BrandName]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[ChannelName]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].Columns[ChannelName]"
                       cachedDataType="wstr"
                       cachedLength="20"
                       cachedName="ChannelName"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[ChannelName]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[ChannelName]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[ChannelName]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[ChannelName]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[SalesKey]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[SalesKey]"
                       dataType="i4"
                       name="SalesKey" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
                       dataType="dbTimeStamp"
                       name="DateKey" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
                       dataType="i4"
                       name="ProductKey" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[PromotionKey]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[PromotionKey]"
                       dataType="i4"
                       name="PromotionKey" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[ChannelKey]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[ChannelKey]"
                       dataType="i4"
                       name="ChannelKey" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[SalesQuantity]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[SalesQuantity]"
                       dataType="i4"
                       name="SalesQuantity" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[DiscountAmount]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[DiscountAmount]"
                       dataType="cy"
                       name="DiscountAmount" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[SalesAmount]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[SalesAmount]"
                       dataType="cy"
                       name="SalesAmount" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
                       dataType="cy"
                       name="UnitPrice" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[UnitCost]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[UnitCost]"
                       dataType="cy"
                       name="UnitCost" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[PromotionName]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[PromotionName]"
                       dataType="wstr"
                       length="100"
                       name="PromotionName" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[DiscountPercent]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[DiscountPercent]"
                       dataType="r8"
                       name="DiscountPercent" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[PromotionCategory]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[PromotionCategory]"
                       dataType="wstr"
                       length="50"
                       name="PromotionCategory" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[FullDateLabel]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[FullDateLabel]"
                       dataType="wstr"
                       length="20"
                       name="FullDateLabel" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
                       dataType="wstr"
                       length="500"
                       name="ProductName" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[BrandName]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[BrandName]"
                       dataType="wstr"
                       length="50"
                       name="BrandName" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[ChannelName]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input].ExternalColumns[ChannelName]"
                       dataType="wstr"
                       length="20"
                       name="ChannelName" />
@@ -319,22 +421,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\BD DestinationETL Detalles.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\BD DestinationETL Detalles.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Detalles.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\BD DestinationETL Detalles.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -343,7 +445,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\BD DestinationETL Resumen"
+              refId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
@@ -400,7 +502,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\BD DestinationETL Resumen.Connections[OleDbConnection]"
+                  refId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[CRUZJEFF225.DestinationETL 1]"
                   connectionManagerRefId="Package.ConnectionManagers[CRUZJEFF225.DestinationETL 1]"
                   description="The OLE DB runtime connection used to access the database."
@@ -408,110 +510,110 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input]"
+                  refId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].Columns[PromotionName]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].Columns[PromotionName]"
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="PromotionName"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[PromotionName]"
-                      lineageId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[PromotionName]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[PromotionName]"
+                      lineageId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[PromotionName]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].Columns[PromotionCategory]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].Columns[PromotionCategory]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="PromotionCategory"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[PromotionCategory]"
-                      lineageId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[PromotionCategory]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[PromotionCategory]"
+                      lineageId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[PromotionCategory]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].Columns[TotalVentas]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].Columns[TotalVentas]"
                       cachedDataType="i4"
                       cachedName="TotalVentas"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[TotalVentas]"
-                      lineageId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[TotalVentas]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[TotalVentas]"
+                      lineageId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[TotalVentas]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].Columns[TotalIngresos]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].Columns[TotalIngresos]"
                       cachedDataType="cy"
                       cachedName="TotalIngresos"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[TotalIngresos]"
-                      lineageId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[TotalIngresos]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[TotalIngresos]"
+                      lineageId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[TotalIngresos]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].Columns[TotalDescuentos]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].Columns[TotalDescuentos]"
                       cachedDataType="cy"
                       cachedName="TotalDescuentos"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[TotalDescuentos]"
-                      lineageId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[TotalDescuentos]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[TotalDescuentos]"
+                      lineageId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[TotalDescuentos]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].Columns[Anio]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].Columns[Anio]"
                       cachedDataType="i4"
                       cachedName="Anio"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[Año]"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Anio]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[Año]"
+                      lineageId="Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Anio]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].Columns[Mes]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].Columns[Mes]"
                       cachedDataType="i4"
                       cachedName="Mes"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[Mes]"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[Mes]"
+                      lineageId="Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].Columns[MesNombre]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].Columns[MesNombre]"
                       cachedDataType="wstr"
                       cachedLength="11"
                       cachedName="MesNombre"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[MesNombre]"
-                      lineageId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output].Columns[MesNombre]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[MesNombre]"
+                      lineageId="Package\ImpactoPromocionesDTF\Nombre Mes.Outputs[Derived Column Output].Columns[MesNombre]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].Columns[EtiquetaFecha]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].Columns[EtiquetaFecha]"
                       cachedDataType="wstr"
                       cachedLength="15"
                       cachedName="EtiquetaFecha"
-                      externalMetadataColumnId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[MesAñoEtiqueta]"
-                      lineageId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Output].Columns[EtiquetaFecha]" />
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[MesAñoEtiqueta]"
+                      lineageId="Package\ImpactoPromocionesDTF\Etiqueta Fecha Completa.Outputs[Derived Column Output].Columns[EtiquetaFecha]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[PromotionName]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[PromotionName]"
                       dataType="wstr"
                       length="100"
                       name="PromotionName" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[PromotionCategory]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[PromotionCategory]"
                       dataType="wstr"
                       length="50"
                       name="PromotionCategory" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[TotalVentas]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[TotalVentas]"
                       dataType="i4"
                       name="TotalVentas" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[TotalIngresos]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[TotalIngresos]"
                       dataType="cy"
                       name="TotalIngresos" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[TotalDescuentos]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[TotalDescuentos]"
                       dataType="cy"
                       name="TotalDescuentos" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[Año]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[Año]"
                       dataType="i4"
                       name="Año" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[Mes]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[Mes]"
                       dataType="i4"
                       name="Mes" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[MesNombre]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[MesNombre]"
                       dataType="wstr"
                       length="15"
                       name="MesNombre" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[MesAñoEtiqueta]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input].ExternalColumns[MesAñoEtiqueta]"
                       dataType="wstr"
                       length="25"
                       name="MesAñoEtiqueta" />
@@ -520,22 +622,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\BD DestinationETL Resumen.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Resumen.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\BD DestinationETL Resumen.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\BD DestinationETL Resumen.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\BD DestinationETL Resumen.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -544,7 +646,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Contoso BI - Resumen"
+              refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
@@ -609,7 +711,7 @@ GROUP BY
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Contoso BI - Resumen.Connections[OleDbConnection]"
+                  refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Connections[OleDbConnection]"
                   connectionManagerID="{6B8EDAC8-EA5A-47E5-B77C-43AB1C9DCF4E}:external"
                   connectionManagerRefId="Project.ConnectionManagers[CRUZJEFF225.Spanish 1]"
                   description="The OLE DB runtime connection used to access the database."
@@ -617,161 +719,161 @@ GROUP BY
               </connections>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output]"
+                  refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[PromotionName]"
+                      refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[PromotionName]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[PromotionName]"
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[PromotionName]"
                       length="100"
-                      lineageId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[PromotionName]"
+                      lineageId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[PromotionName]"
                       name="PromotionName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[PromotionCategory]"
+                      refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[PromotionCategory]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[PromotionCategory]"
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[PromotionCategory]"
                       length="50"
-                      lineageId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[PromotionCategory]"
+                      lineageId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[PromotionCategory]"
                       name="PromotionCategory"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[CalendarMonth]"
+                      refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[CalendarMonth]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[CalendarMonth]"
-                      lineageId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[CalendarMonth]"
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[CalendarMonth]"
+                      lineageId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[CalendarMonth]"
                       name="CalendarMonth"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[CalendarYear]"
+                      refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[CalendarYear]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[CalendarYear]"
-                      lineageId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[CalendarYear]"
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[CalendarYear]"
+                      lineageId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[CalendarYear]"
                       name="CalendarYear"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[TotalVentas]"
+                      refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[TotalVentas]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[TotalVentas]"
-                      lineageId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[TotalVentas]"
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[TotalVentas]"
+                      lineageId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[TotalVentas]"
                       name="TotalVentas"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[TotalIngresos]"
+                      refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[TotalIngresos]"
                       dataType="cy"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[TotalIngresos]"
-                      lineageId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[TotalIngresos]"
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[TotalIngresos]"
+                      lineageId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[TotalIngresos]"
                       name="TotalIngresos"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[TotalDescuentos]"
+                      refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[TotalDescuentos]"
                       dataType="cy"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[TotalDescuentos]"
-                      lineageId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[TotalDescuentos]"
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[TotalDescuentos]"
+                      lineageId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[TotalDescuentos]"
                       name="TotalDescuentos"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[PromotionName]"
+                      refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[PromotionName]"
                       dataType="wstr"
                       length="100"
                       name="PromotionName" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[PromotionCategory]"
+                      refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[PromotionCategory]"
                       dataType="wstr"
                       length="50"
                       name="PromotionCategory" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[CalendarMonth]"
+                      refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[CalendarMonth]"
                       dataType="i4"
                       name="CalendarMonth" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[CalendarYear]"
+                      refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[CalendarYear]"
                       dataType="i4"
                       name="CalendarYear" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[TotalVentas]"
+                      refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[TotalVentas]"
                       dataType="i4"
                       name="TotalVentas" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[TotalIngresos]"
+                      refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[TotalIngresos]"
                       dataType="cy"
                       name="TotalIngresos" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[TotalDescuentos]"
+                      refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].ExternalColumns[TotalDescuentos]"
                       dataType="cy"
                       name="TotalDescuentos" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Error Output]"
+                  refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[PromotionName]"
+                      refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[PromotionName]"
                       dataType="wstr"
                       length="100"
-                      lineageId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[PromotionName]"
+                      lineageId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[PromotionName]"
                       name="PromotionName" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[PromotionCategory]"
+                      refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[PromotionCategory]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[PromotionCategory]"
+                      lineageId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[PromotionCategory]"
                       name="PromotionCategory" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[CalendarMonth]"
+                      refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[CalendarMonth]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[CalendarMonth]"
+                      lineageId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[CalendarMonth]"
                       name="CalendarMonth" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[CalendarYear]"
+                      refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[CalendarYear]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[CalendarYear]"
+                      lineageId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[CalendarYear]"
                       name="CalendarYear" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[TotalVentas]"
+                      refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[TotalVentas]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[TotalVentas]"
+                      lineageId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[TotalVentas]"
                       name="TotalVentas" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[TotalIngresos]"
+                      refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[TotalIngresos]"
                       dataType="cy"
-                      lineageId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[TotalIngresos]"
+                      lineageId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[TotalIngresos]"
                       name="TotalIngresos" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[TotalDescuentos]"
+                      refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[TotalDescuentos]"
                       dataType="cy"
-                      lineageId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[TotalDescuentos]"
+                      lineageId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[TotalDescuentos]"
                       name="TotalDescuentos" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -780,7 +882,7 @@ GROUP BY
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\ContosoBI - Detalles"
+              refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
@@ -852,7 +954,7 @@ WHERE fs.SalesQuantity &gt; 0;</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\ContosoBI - Detalles.Connections[OleDbConnection]"
+                  refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Connections[OleDbConnection]"
                   connectionManagerID="{6B8EDAC8-EA5A-47E5-B77C-43AB1C9DCF4E}:external"
                   connectionManagerRefId="Project.ConnectionManagers[CRUZJEFF225.Spanish 1]"
                   description="The OLE DB runtime connection used to access the database."
@@ -860,353 +962,353 @@ WHERE fs.SalesQuantity &gt; 0;</property>
               </connections>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output]"
+                  refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[SalesKey]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[SalesKey]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[SalesKey]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[SalesKey]"
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[SalesKey]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[SalesKey]"
                       name="SalesKey"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[DateKey]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[DateKey]"
                       name="DateKey"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[ProductKey]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[ProductKey]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[ProductKey]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[ProductKey]"
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[ProductKey]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[ProductKey]"
                       name="ProductKey"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[PromotionKey]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[PromotionKey]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[PromotionKey]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[PromotionKey]"
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[PromotionKey]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[PromotionKey]"
                       name="PromotionKey"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[ChannelKey]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[ChannelKey]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[ChannelKey]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[ChannelKey]"
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[ChannelKey]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[ChannelKey]"
                       name="ChannelKey"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[SalesQuantity]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[SalesQuantity]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[SalesQuantity]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[SalesQuantity]"
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[SalesQuantity]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[SalesQuantity]"
                       name="SalesQuantity"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[DiscountAmount]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[DiscountAmount]"
                       dataType="cy"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[DiscountAmount]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[DiscountAmount]"
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[DiscountAmount]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[DiscountAmount]"
                       name="DiscountAmount"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[SalesAmount]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[SalesAmount]"
                       dataType="cy"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[SalesAmount]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[SalesAmount]"
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[SalesAmount]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[SalesAmount]"
                       name="SalesAmount"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[UnitPrice]"
                       dataType="cy"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[UnitPrice]"
                       name="UnitPrice"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[UnitCost]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[UnitCost]"
                       dataType="cy"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[UnitCost]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[UnitCost]"
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[UnitCost]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[UnitCost]"
                       name="UnitCost"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[PromotionName]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[PromotionName]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[PromotionName]"
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[PromotionName]"
                       length="100"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[PromotionName]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[PromotionName]"
                       name="PromotionName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[DiscountPercent]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[DiscountPercent]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[DiscountPercent]"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[DiscountPercent]"
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[DiscountPercent]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[DiscountPercent]"
                       name="DiscountPercent"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[PromotionCategory]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[PromotionCategory]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[PromotionCategory]"
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[PromotionCategory]"
                       length="50"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[PromotionCategory]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[PromotionCategory]"
                       name="PromotionCategory"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[FullDateLabel]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[FullDateLabel]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[FullDateLabel]"
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[FullDateLabel]"
                       length="20"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[FullDateLabel]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[FullDateLabel]"
                       name="FullDateLabel"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[ProductName]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[ProductName]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
                       length="500"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[ProductName]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[ProductName]"
                       name="ProductName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[BrandName]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[BrandName]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[BrandName]"
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[BrandName]"
                       length="50"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[BrandName]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[BrandName]"
                       name="BrandName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[ChannelName]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[ChannelName]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[ChannelName]"
+                      externalMetadataColumnId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[ChannelName]"
                       length="20"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[ChannelName]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[ChannelName]"
                       name="ChannelName"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[SalesKey]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[SalesKey]"
                       dataType="i4"
                       name="SalesKey" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
                       dataType="dbTimeStamp"
                       name="DateKey" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[ProductKey]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[ProductKey]"
                       dataType="i4"
                       name="ProductKey" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[PromotionKey]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[PromotionKey]"
                       dataType="i4"
                       name="PromotionKey" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[ChannelKey]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[ChannelKey]"
                       dataType="i4"
                       name="ChannelKey" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[SalesQuantity]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[SalesQuantity]"
                       dataType="i4"
                       name="SalesQuantity" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[DiscountAmount]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[DiscountAmount]"
                       dataType="cy"
                       name="DiscountAmount" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[SalesAmount]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[SalesAmount]"
                       dataType="cy"
                       name="SalesAmount" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
                       dataType="cy"
                       name="UnitPrice" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[UnitCost]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[UnitCost]"
                       dataType="cy"
                       name="UnitCost" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[PromotionName]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[PromotionName]"
                       dataType="wstr"
                       length="100"
                       name="PromotionName" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[DiscountPercent]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[DiscountPercent]"
                       dataType="r8"
                       name="DiscountPercent" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[PromotionCategory]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[PromotionCategory]"
                       dataType="wstr"
                       length="50"
                       name="PromotionCategory" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[FullDateLabel]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[FullDateLabel]"
                       dataType="wstr"
                       length="20"
                       name="FullDateLabel" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
                       dataType="wstr"
                       length="500"
                       name="ProductName" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[BrandName]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[BrandName]"
                       dataType="wstr"
                       length="50"
                       name="BrandName" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[ChannelName]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].ExternalColumns[ChannelName]"
                       dataType="wstr"
                       length="20"
                       name="ChannelName" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output]"
+                  refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[SalesKey]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[SalesKey]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[SalesKey]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[SalesKey]"
                       name="SalesKey" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[DateKey]"
                       dataType="dbTimeStamp"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[DateKey]"
                       name="DateKey" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[ProductKey]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[ProductKey]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[ProductKey]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[ProductKey]"
                       name="ProductKey" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[PromotionKey]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[PromotionKey]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[PromotionKey]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[PromotionKey]"
                       name="PromotionKey" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[ChannelKey]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[ChannelKey]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[ChannelKey]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[ChannelKey]"
                       name="ChannelKey" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[SalesQuantity]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[SalesQuantity]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[SalesQuantity]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[SalesQuantity]"
                       name="SalesQuantity" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[DiscountAmount]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[DiscountAmount]"
                       dataType="cy"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[DiscountAmount]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[DiscountAmount]"
                       name="DiscountAmount" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[SalesAmount]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[SalesAmount]"
                       dataType="cy"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[SalesAmount]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[SalesAmount]"
                       name="SalesAmount" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
                       dataType="cy"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
                       name="UnitPrice" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[UnitCost]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[UnitCost]"
                       dataType="cy"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[UnitCost]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[UnitCost]"
                       name="UnitCost" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[PromotionName]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[PromotionName]"
                       dataType="wstr"
                       length="100"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[PromotionName]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[PromotionName]"
                       name="PromotionName" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[DiscountPercent]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[DiscountPercent]"
                       dataType="r8"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[DiscountPercent]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[DiscountPercent]"
                       name="DiscountPercent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[PromotionCategory]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[PromotionCategory]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[PromotionCategory]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[PromotionCategory]"
                       name="PromotionCategory" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[FullDateLabel]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[FullDateLabel]"
                       dataType="wstr"
                       length="20"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[FullDateLabel]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[FullDateLabel]"
                       name="FullDateLabel" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[ProductName]"
                       dataType="wstr"
                       length="500"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[ProductName]"
                       name="ProductName" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[BrandName]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[BrandName]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[BrandName]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[BrandName]"
                       name="BrandName" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[ChannelName]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[ChannelName]"
                       dataType="wstr"
                       length="20"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[ChannelName]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[ChannelName]"
                       name="ChannelName" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1215,230 +1317,47 @@ WHERE fs.SalesQuantity &gt; 0;</property>
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Derived Column"
+              refId="Package\ImpactoPromocionesDTF\Etiqueta Fecha Completa"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Derived Column"
+              name="Etiqueta Fecha Completa"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+                  refId="Package\ImpactoPromocionesDTF\Etiqueta Fecha Completa.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[CalendarMonth]"
-                      cachedDataType="i4"
-                      cachedName="CalendarMonth"
-                      lineageId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[CalendarMonth]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Anio]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Anio]"
-                      name="Anio"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">#{Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[CalendarMonth]} / 100</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">CalendarMonth / 100</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]"
-                      name="Mes"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">#{Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[CalendarMonth]} % 100</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">CalendarMonth % 100</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Data Flow Task\Derived Column 2"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Derived Column 2"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input].Columns[Mes]"
-                      cachedDataType="i4"
-                      cachedName="Mes"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output].Columns[MesNombre]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="11"
-                      lineageId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output].Columns[MesNombre]"
-                      name="MesNombre"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">#{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]} == 1 ? "Enero" : #{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]} == 2 ? "Febrero" : #{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]} == 3 ? "Marzo" : #{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]} == 4 ? "Abril" : #{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]} == 5 ? "Mayo" : #{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]} == 6 ? "Junio" : #{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]} == 7 ? "Julio" : #{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]} == 8 ? "Agosto" : #{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]} == 9 ? "Septiembre" : #{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]} == 10 ? "Octubre" : #{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]} == 11 ? "Noviembre" : #{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]} == 12 ? "Diciembre" : "Desconocido"</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">Mes == 1 ? "Enero" : Mes == 2 ? "Febrero" : Mes == 3 ? "Marzo" : Mes == 4 ? "Abril" : Mes == 5 ? "Mayo" : Mes == 6 ? "Junio" : Mes == 7 ? "Julio" : Mes == 8 ? "Agosto" : Mes == 9 ? "Septiembre" : Mes == 10 ? "Octubre" : Mes == 11 ? "Noviembre" : Mes == 12 ? "Diciembre" : "Desconocido"</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Data Flow Task\Derived Column 3"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Derived Column 3"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Data Flow Task\Derived Column 3.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Derived Column 3.Inputs[Derived Column Input].Columns[Anio]"
+                      refId="Package\ImpactoPromocionesDTF\Etiqueta Fecha Completa.Inputs[Derived Column Input].Columns[Anio]"
                       cachedDataType="i4"
                       cachedName="Anio"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Anio]" />
+                      lineageId="Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Anio]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Derived Column 3.Inputs[Derived Column Input].Columns[Mes]"
+                      refId="Package\ImpactoPromocionesDTF\Etiqueta Fecha Completa.Inputs[Derived Column Input].Columns[Mes]"
                       cachedDataType="i4"
                       cachedName="Mes"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]" />
+                      lineageId="Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Output]"
+                  refId="Package\ImpactoPromocionesDTF\Etiqueta Fecha Completa.Outputs[Derived Column Output]"
                   description="Default Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   name="Derived Column Output"
-                  synchronousInputId="Package\Data Flow Task\Derived Column 3.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\ImpactoPromocionesDTF\Etiqueta Fecha Completa.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Output].Columns[EtiquetaFecha]"
+                      refId="Package\ImpactoPromocionesDTF\Etiqueta Fecha Completa.Outputs[Derived Column Output].Columns[EtiquetaFecha]"
                       dataType="wstr"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
                       length="15"
-                      lineageId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Output].Columns[EtiquetaFecha]"
+                      lineageId="Package\ImpactoPromocionesDTF\Etiqueta Fecha Completa.Outputs[Derived Column Output].Columns[EtiquetaFecha]"
                       name="EtiquetaFecha"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -1446,7 +1365,7 @@ WHERE fs.SalesQuantity &gt; 0;</property>
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">#{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]} == 1 ? "Enero " + (DT_WSTR,4)#{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Anio]} : #{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]} == 2 ? "Febrero " + (DT_WSTR,4)#{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Anio]} : #{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]} == 3 ? "Marzo " + (DT_WSTR,4)#{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Anio]} : #{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]} == 4 ? "Abril " + (DT_WSTR,4)#{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Anio]} : #{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]} == 5 ? "Mayo " + (DT_WSTR,4)#{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Anio]} : #{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]} == 6 ? "Junio " + (DT_WSTR,4)#{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Anio]} : #{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]} == 7 ? "Julio " + (DT_WSTR,4)#{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Anio]} : #{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]} == 8 ? "Agosto " + (DT_WSTR,4)#{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Anio]} : #{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]} == 9 ? "Septiembre " + (DT_WSTR,4)#{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Anio]} : #{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]} == 10 ? "Octubre " + (DT_WSTR,4)#{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Anio]} : #{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]} == 11 ? "Noviembre " + (DT_WSTR,4)#{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Anio]} : #{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Mes]} == 12 ? "Diciembre " + (DT_WSTR,4)#{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Anio]} : "Desconocido"</property>
+                          name="Expression">#{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]} == 1 ? "Enero " + (DT_WSTR,4)#{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Anio]} : #{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]} == 2 ? "Febrero " + (DT_WSTR,4)#{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Anio]} : #{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]} == 3 ? "Marzo " + (DT_WSTR,4)#{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Anio]} : #{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]} == 4 ? "Abril " + (DT_WSTR,4)#{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Anio]} : #{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]} == 5 ? "Mayo " + (DT_WSTR,4)#{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Anio]} : #{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]} == 6 ? "Junio " + (DT_WSTR,4)#{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Anio]} : #{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]} == 7 ? "Julio " + (DT_WSTR,4)#{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Anio]} : #{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]} == 8 ? "Agosto " + (DT_WSTR,4)#{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Anio]} : #{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]} == 9 ? "Septiembre " + (DT_WSTR,4)#{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Anio]} : #{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]} == 10 ? "Octubre " + (DT_WSTR,4)#{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Anio]} : #{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]} == 11 ? "Noviembre " + (DT_WSTR,4)#{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Anio]} : #{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]} == 12 ? "Diciembre " + (DT_WSTR,4)#{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Anio]} : "Desconocido"</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -1459,23 +1378,23 @@ WHERE fs.SalesQuantity &gt; 0;</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Error Output]"
+                  refId="Package\ImpactoPromocionesDTF\Etiqueta Fecha Completa.Outputs[Derived Column Error Output]"
                   description="Error Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Derived Column Error Output"
-                  synchronousInputId="Package\Data Flow Task\Derived Column 3.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\ImpactoPromocionesDTF\Etiqueta Fecha Completa.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      refId="Package\ImpactoPromocionesDTF\Etiqueta Fecha Completa.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      lineageId="Package\ImpactoPromocionesDTF\Etiqueta Fecha Completa.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      refId="Package\ImpactoPromocionesDTF\Etiqueta Fecha Completa.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\ImpactoPromocionesDTF\Etiqueta Fecha Completa.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1484,7 +1403,88 @@ WHERE fs.SalesQuantity &gt; 0;</property>
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Reemplazando Nulos D"
+              refId="Package\ImpactoPromocionesDTF\Nombre Mes"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Nombre Mes"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\ImpactoPromocionesDTF\Nombre Mes.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ImpactoPromocionesDTF\Nombre Mes.Inputs[Derived Column Input].Columns[Mes]"
+                      cachedDataType="i4"
+                      cachedName="Mes"
+                      lineageId="Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ImpactoPromocionesDTF\Nombre Mes.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\ImpactoPromocionesDTF\Nombre Mes.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ImpactoPromocionesDTF\Nombre Mes.Outputs[Derived Column Output].Columns[MesNombre]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="11"
+                      lineageId="Package\ImpactoPromocionesDTF\Nombre Mes.Outputs[Derived Column Output].Columns[MesNombre]"
+                      name="MesNombre"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]} == 1 ? "Enero" : #{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]} == 2 ? "Febrero" : #{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]} == 3 ? "Marzo" : #{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]} == 4 ? "Abril" : #{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]} == 5 ? "Mayo" : #{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]} == 6 ? "Junio" : #{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]} == 7 ? "Julio" : #{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]} == 8 ? "Agosto" : #{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]} == 9 ? "Septiembre" : #{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]} == 10 ? "Octubre" : #{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]} == 11 ? "Noviembre" : #{Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output].Columns[Mes]} == 12 ? "Diciembre" : "Desconocido"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Mes == 1 ? "Enero" : Mes == 2 ? "Febrero" : Mes == 3 ? "Marzo" : Mes == 4 ? "Abril" : Mes == 5 ? "Mayo" : Mes == 6 ? "Junio" : Mes == 7 ? "Julio" : Mes == 8 ? "Agosto" : Mes == 9 ? "Septiembre" : Mes == 10 ? "Octubre" : Mes == 11 ? "Noviembre" : Mes == 12 ? "Diciembre" : "Desconocido"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ImpactoPromocionesDTF\Nombre Mes.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\ImpactoPromocionesDTF\Nombre Mes.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ImpactoPromocionesDTF\Nombre Mes.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ImpactoPromocionesDTF\Nombre Mes.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ImpactoPromocionesDTF\Nombre Mes.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ImpactoPromocionesDTF\Nombre Mes.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ImpactoPromocionesDTF\Reemplazando Nulos D"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
@@ -1492,18 +1492,18 @@ WHERE fs.SalesQuantity &gt; 0;</property>
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Reemplazando Nulos D.Inputs[Derived Column Input]"
+                  refId="Package\ImpactoPromocionesDTF\Reemplazando Nulos D.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Reemplazando Nulos D.Inputs[Derived Column Input].Columns[PromotionName]"
+                      refId="Package\ImpactoPromocionesDTF\Reemplazando Nulos D.Inputs[Derived Column Input].Columns[PromotionName]"
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="PromotionName"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[PromotionName]"
+                      lineageId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[PromotionName]"
                       truncationRowDisposition="FailComponent"
                       usageType="readWrite">
                       <properties>
@@ -1511,7 +1511,7 @@ WHERE fs.SalesQuantity &gt; 0;</property>
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[PromotionName]}) ? "Sin Definir" : #{Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[PromotionName]}</property>
+                          name="Expression">[ISNULL](#{Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[PromotionName]}) ? "Sin Definir" : #{Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output].Columns[PromotionName]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -1526,31 +1526,31 @@ WHERE fs.SalesQuantity &gt; 0;</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Reemplazando Nulos D.Outputs[Derived Column Output]"
+                  refId="Package\ImpactoPromocionesDTF\Reemplazando Nulos D.Outputs[Derived Column Output]"
                   description="Default Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   name="Derived Column Output"
-                  synchronousInputId="Package\Data Flow Task\Reemplazando Nulos D.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\ImpactoPromocionesDTF\Reemplazando Nulos D.Inputs[Derived Column Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Reemplazando Nulos D.Outputs[Derived Column Error Output]"
+                  refId="Package\ImpactoPromocionesDTF\Reemplazando Nulos D.Outputs[Derived Column Error Output]"
                   description="Error Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Derived Column Error Output"
-                  synchronousInputId="Package\Data Flow Task\Reemplazando Nulos D.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\ImpactoPromocionesDTF\Reemplazando Nulos D.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Reemplazando Nulos D.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      refId="Package\ImpactoPromocionesDTF\Reemplazando Nulos D.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Reemplazando Nulos D.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      lineageId="Package\ImpactoPromocionesDTF\Reemplazando Nulos D.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Reemplazando Nulos D.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      refId="Package\ImpactoPromocionesDTF\Reemplazando Nulos D.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Reemplazando Nulos D.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\ImpactoPromocionesDTF\Reemplazando Nulos D.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1559,7 +1559,7 @@ WHERE fs.SalesQuantity &gt; 0;</property>
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Reemplazando Nulos R"
+              refId="Package\ImpactoPromocionesDTF\Reemplazando Nulos R"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
@@ -1567,18 +1567,18 @@ WHERE fs.SalesQuantity &gt; 0;</property>
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Reemplazando Nulos R.Inputs[Derived Column Input]"
+                  refId="Package\ImpactoPromocionesDTF\Reemplazando Nulos R.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Reemplazando Nulos R.Inputs[Derived Column Input].Columns[PromotionName]"
+                      refId="Package\ImpactoPromocionesDTF\Reemplazando Nulos R.Inputs[Derived Column Input].Columns[PromotionName]"
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="PromotionName"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[PromotionName]"
+                      lineageId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[PromotionName]"
                       truncationRowDisposition="FailComponent"
                       usageType="readWrite">
                       <properties>
@@ -1586,7 +1586,7 @@ WHERE fs.SalesQuantity &gt; 0;</property>
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[PromotionName]}) ? "Sin Definir" : #{Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[PromotionName]}</property>
+                          name="Expression">[ISNULL](#{Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[PromotionName]}) ? "Sin Definir" : #{Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output].Columns[PromotionName]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -1601,31 +1601,31 @@ WHERE fs.SalesQuantity &gt; 0;</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Reemplazando Nulos R.Outputs[Derived Column Output]"
+                  refId="Package\ImpactoPromocionesDTF\Reemplazando Nulos R.Outputs[Derived Column Output]"
                   description="Default Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   name="Derived Column Output"
-                  synchronousInputId="Package\Data Flow Task\Reemplazando Nulos R.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\ImpactoPromocionesDTF\Reemplazando Nulos R.Inputs[Derived Column Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Reemplazando Nulos R.Outputs[Derived Column Error Output]"
+                  refId="Package\ImpactoPromocionesDTF\Reemplazando Nulos R.Outputs[Derived Column Error Output]"
                   description="Error Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Derived Column Error Output"
-                  synchronousInputId="Package\Data Flow Task\Reemplazando Nulos R.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\ImpactoPromocionesDTF\Reemplazando Nulos R.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Reemplazando Nulos R.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      refId="Package\ImpactoPromocionesDTF\Reemplazando Nulos R.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Reemplazando Nulos R.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      lineageId="Package\ImpactoPromocionesDTF\Reemplazando Nulos R.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Reemplazando Nulos R.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      refId="Package\ImpactoPromocionesDTF\Reemplazando Nulos R.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Reemplazando Nulos R.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\ImpactoPromocionesDTF\Reemplazando Nulos R.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1636,40 +1636,40 @@ WHERE fs.SalesQuantity &gt; 0;</property>
           </components>
           <paths>
             <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output]"
-              endId="Package\Data Flow Task\BD DestinationETL Detalles.Inputs[OLE DB Destination Input]"
+              refId="Package\ImpactoPromocionesDTF.Paths[Derived Column Output]"
+              endId="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
-              startId="Package\Data Flow Task\Reemplazando Nulos D.Outputs[Derived Column Output]" />
+              startId="Package\ImpactoPromocionesDTF\Reemplazando Nulos D.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output1]"
-              endId="Package\Data Flow Task\BD DestinationETL Resumen.Inputs[OLE DB Destination Input]"
+              refId="Package\ImpactoPromocionesDTF.Paths[Derived Column Output1]"
+              endId="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
-              startId="Package\Data Flow Task\Reemplazando Nulos R.Outputs[Derived Column Output]" />
+              startId="Package\ImpactoPromocionesDTF\Reemplazando Nulos R.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output2]"
-              endId="Package\Data Flow Task\Derived Column 2.Inputs[Derived Column Input]"
+              refId="Package\ImpactoPromocionesDTF.Paths[Derived Column Output2]"
+              endId="Package\ImpactoPromocionesDTF\Nombre Mes.Inputs[Derived Column Input]"
               name="Derived Column Output"
-              startId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]" />
+              startId="Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Outputs[Derived Column Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output3]"
-              endId="Package\Data Flow Task\Derived Column 3.Inputs[Derived Column Input]"
+              refId="Package\ImpactoPromocionesDTF.Paths[Derived Column Output3]"
+              endId="Package\ImpactoPromocionesDTF\Etiqueta Fecha Completa.Inputs[Derived Column Input]"
               name="Derived Column Output"
-              startId="Package\Data Flow Task\Derived Column 2.Outputs[Derived Column Output]" />
+              startId="Package\ImpactoPromocionesDTF\Nombre Mes.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output4]"
-              endId="Package\Data Flow Task\Reemplazando Nulos R.Inputs[Derived Column Input]"
+              refId="Package\ImpactoPromocionesDTF.Paths[Derived Column Output4]"
+              endId="Package\ImpactoPromocionesDTF\Reemplazando Nulos R.Inputs[Derived Column Input]"
               name="Derived Column Output"
-              startId="Package\Data Flow Task\Derived Column 3.Outputs[Derived Column Output]" />
+              startId="Package\ImpactoPromocionesDTF\Etiqueta Fecha Completa.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
-              endId="Package\Data Flow Task\Reemplazando Nulos D.Inputs[Derived Column Input]"
+              refId="Package\ImpactoPromocionesDTF.Paths[OLE DB Source Output]"
+              endId="Package\ImpactoPromocionesDTF\Reemplazando Nulos D.Inputs[Derived Column Input]"
               name="OLE DB Source Output"
-              startId="Package\Data Flow Task\ContosoBI - Detalles.Outputs[OLE DB Source Output]" />
+              startId="Package\ImpactoPromocionesDTF\ContosoBI - Detalles.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[OLE DB Source Output1]"
-              endId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+              refId="Package\ImpactoPromocionesDTF.Paths[OLE DB Source Output1]"
+              endId="Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num).Inputs[Derived Column Input]"
               name="OLE DB Source Output"
-              startId="Package\Data Flow Task\Contoso BI - Resumen.Outputs[OLE DB Source Output]" />
+              startId="Package\ImpactoPromocionesDTF\Contoso BI - Resumen.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1688,79 +1688,79 @@ WHERE fs.SalesQuantity &gt; 0;</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="151,42"
-          Id="Package\Data Flow Task"
+          Size="196,42"
+          Id="Package\ImpactoPromocionesDTF"
           TopLeft="333,32" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Data Flow Task">
+    design-time-name="Package\ImpactoPromocionesDTF">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="178,54"
-          Id="Package\Data Flow Task\BD DestinationETL Resumen"
-          TopLeft="586.5,445.5" />
+          Id="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen"
+          TopLeft="585.5,489.5" />
         <NodeLayout
           Size="188,42"
-          Id="Package\Data Flow Task\Reemplazando Nulos D"
-          TopLeft="212,115.5" />
+          Id="Package\ImpactoPromocionesDTF\Reemplazando Nulos D"
+          TopLeft="188,262.5" />
         <NodeLayout
-          Size="154,42"
-          Id="Package\Data Flow Task\Derived Column"
-          TopLeft="721,73.5" />
+          Size="211,42"
+          Id="Package\ImpactoPromocionesDTF\Año y Mes Especifico (Num)"
+          TopLeft="720,117.5" />
         <NodeLayout
           Size="187,42"
-          Id="Package\Data Flow Task\Reemplazando Nulos R"
-          TopLeft="576.5,306.5" />
+          Id="Package\ImpactoPromocionesDTF\Reemplazando Nulos R"
+          TopLeft="575.5,350.5" />
         <NodeLayout
-          Size="163,42"
-          Id="Package\Data Flow Task\Derived Column 2"
-          TopLeft="564.5,132.5" />
+          Size="138,42"
+          Id="Package\ImpactoPromocionesDTF\Nombre Mes"
+          TopLeft="563.5,176.5" />
         <NodeLayout
           Size="175,42"
-          Id="Package\Data Flow Task\ContosoBI - Detalles"
-          TopLeft="220.5,20.5" />
+          Id="Package\ImpactoPromocionesDTF\ContosoBI - Detalles"
+          TopLeft="196.5,167.5" />
         <NodeLayout
           Size="185,42"
-          Id="Package\Data Flow Task\Contoso BI - Resumen"
-          TopLeft="505.5,17.5" />
+          Id="Package\ImpactoPromocionesDTF\Contoso BI - Resumen"
+          TopLeft="504.5,61.5" />
         <NodeLayout
           Size="167,52"
-          Id="Package\Data Flow Task\BD DestinationETL Detalles"
-          TopLeft="225.5,207.5" />
+          Id="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles"
+          TopLeft="201.5,354.5" />
         <NodeLayout
-          Size="163,42"
-          Id="Package\Data Flow Task\Derived Column 3"
-          TopLeft="677.5,204.5" />
+          Size="151,46"
+          Id="Package\ImpactoPromocionesDTF\Etiqueta Fecha Completa"
+          TopLeft="676.5,248.5" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output4]"
-          TopLeft="759,246.5">
+          Id="Package\ImpactoPromocionesDTF.Paths[Derived Column Output4]"
+          TopLeft="752,294.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-89,60"
+              EndConnector="-83,56"
               Start="0,0"
-              End="-89,52.5">
+              End="-83,48.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26" />
+                    End="0,24" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="-4,30" />
+                    Point1="0,24"
+                    Point2="0,28"
+                    Point3="-4,28" />
                   <mssgle:LineSegment
-                    End="-85,30" />
+                    End="-79,28" />
                   <mssgle:CubicBezierSegment
-                    Point1="-85,30"
-                    Point2="-89,30"
-                    Point3="-89,34" />
+                    Point1="-79,28"
+                    Point2="-83,28"
+                    Point3="-83,32" />
                   <mssgle:LineSegment
-                    End="-89,52.5" />
+                    End="-83,48.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1770,14 +1770,14 @@ WHERE fs.SalesQuantity &gt; 0;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output3]"
-          TopLeft="646,174.5">
+          Id="Package\ImpactoPromocionesDTF.Paths[Derived Column Output3]"
+          TopLeft="632.5,218.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="113,30"
+              EndConnector="119.5,30"
               Start="0,0"
-              End="113,22.5">
+              End="119.5,22.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -1788,13 +1788,13 @@ WHERE fs.SalesQuantity &gt; 0;</property>
                     Point2="0,15"
                     Point3="4,15" />
                   <mssgle:LineSegment
-                    End="109,15" />
+                    End="115.5,15" />
                   <mssgle:CubicBezierSegment
-                    Point1="109,15"
-                    Point2="113,15"
-                    Point3="113,19" />
+                    Point1="115.5,15"
+                    Point2="119.5,15"
+                    Point3="119.5,19" />
                   <mssgle:LineSegment
-                    End="113,22.5" />
+                    End="119.5,22.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1804,25 +1804,25 @@ WHERE fs.SalesQuantity &gt; 0;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output2]"
-          TopLeft="721,100.166666666667">
+          Id="Package\ImpactoPromocionesDTF.Paths[Derived Column Output2]"
+          TopLeft="720,144.166666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-75,32.3333333333333"
+              EndConnector="-87.5,32.3333333333333"
               Start="0,0"
-              End="-75,24.8333333333333">
+              End="-87.5,24.8333333333333">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-71,0" />
+                    End="-83.5,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="-71,0"
-                    Point2="-75,0"
-                    Point3="-75,4" />
+                    Point1="-83.5,0"
+                    Point2="-87.5,0"
+                    Point3="-87.5,4" />
                   <mssgle:LineSegment
-                    End="-75,24.8333333333333" />
+                    End="-87.5,24.8333333333333" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1832,8 +1832,8 @@ WHERE fs.SalesQuantity &gt; 0;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output1]"
-          TopLeft="672.75,348.5">
+          Id="Package\ImpactoPromocionesDTF.Paths[Derived Column Output1]"
+          TopLeft="671.75,392.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1854,8 +1854,8 @@ WHERE fs.SalesQuantity &gt; 0;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output]"
-          TopLeft="307.5,157.5">
+          Id="Package\ImpactoPromocionesDTF.Paths[Derived Column Output]"
+          TopLeft="283.5,304.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1876,31 +1876,31 @@ WHERE fs.SalesQuantity &gt; 0;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output1]"
-          TopLeft="690.5,38.5">
+          Id="Package\ImpactoPromocionesDTF.Paths[OLE DB Source Output1]"
+          TopLeft="689.5,82.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="30.5,56"
+              EndConnector="30.5,50.3333333333333"
               Start="0,0"
-              End="23,56">
+              End="23,50.3333333333333">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="11.25,0" />
+                    End="13.6284403669724,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="11.25,0"
-                    Point2="15.25,0"
-                    Point3="15.25,4" />
+                    Point1="13.6284403669724,0"
+                    Point2="17.6284403669724,0"
+                    Point3="17.6284403669724,4" />
                   <mssgle:LineSegment
-                    End="15.25,52" />
+                    End="17.6284403669724,46.3333333333333" />
                   <mssgle:CubicBezierSegment
-                    Point1="15.25,52"
-                    Point2="15.25,56"
-                    Point3="19.25,56" />
+                    Point1="17.6284403669724,46.3333333333333"
+                    Point2="17.6284403669724,50.3333333333333"
+                    Point3="21.6284403669724,50.3333333333333" />
                   <mssgle:LineSegment
-                    End="23,56" />
+                    End="23,50.3333333333333" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1910,8 +1910,8 @@ WHERE fs.SalesQuantity &gt; 0;</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="307,62.5">
+          Id="Package\ImpactoPromocionesDTF.Paths[OLE DB Source Output]"
+          TopLeft="283,209.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1931,11 +1931,18 @@ WHERE fs.SalesQuantity &gt; 0;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <AnnotationLayout
+          Text="Analisis de Impacto de Promociones"
+          ParentId="Package\ImpactoPromocionesDTF"
+          FontInfo="{assembly:Null}"
+          Size="221,60"
+          Id="0171c6cf-095e-4388-b504-04fbe071a10b"
+          TopLeft="220,35" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\BD DestinationETL Resumen">
+    design-time-name="Package\ImpactoPromocionesDTF\BD DestinationETL Resumen">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1948,7 +1955,7 @@ WHERE fs.SalesQuantity &gt; 0;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\ContosoBI - Detalles">
+    design-time-name="Package\ImpactoPromocionesDTF\ContosoBI - Detalles">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1956,7 +1963,7 @@ WHERE fs.SalesQuantity &gt; 0;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Contoso BI - Resumen">
+    design-time-name="Package\ImpactoPromocionesDTF\Contoso BI - Resumen">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1964,7 +1971,7 @@ WHERE fs.SalesQuantity &gt; 0;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\BD DestinationETL Detalles">
+    design-time-name="Package\ImpactoPromocionesDTF\BD DestinationETL Detalles">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

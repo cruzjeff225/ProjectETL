@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ProjectInfo>
     <Name>FASEII-ETLContosoBI</Name>
-    <LastWriteTime>2025-05-26T16:51:13.302422Z</LastWriteTime>
+    <LastWriteTime>2025-05-26T19:25:24.9159955Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -13,7 +13,12 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>AnalisisPromocion.dtsx</Name>
-      <LastWriteTime>2025-05-26T19:05:28.9187649Z</LastWriteTime>
+      <LastWriteTime>2025-05-26T19:29:41.8707286Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>PrediccionVentas.dtsx</Name>
+      <LastWriteTime>2025-05-26T19:29:41.8612367Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
