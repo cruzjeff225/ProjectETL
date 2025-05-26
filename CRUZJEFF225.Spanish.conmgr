@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="CRUZJEFF225.Spanish"
+  DTS:DTSID="{2057D01E-AB1F-4968-8690-E11614DB3F88}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=CRUZJEFF225;Initial Catalog=Spanish;Provider=MSOLEDBSQL19.1;Integrated Security=SSPI;Application Name=SSIS-ETL-{2057D01E-AB1F-4968-8690-E11614DB3F88}CRUZJEFF225.Spanish;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
