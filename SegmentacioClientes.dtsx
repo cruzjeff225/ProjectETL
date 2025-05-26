@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{4929C338-9685-4660-A175-212BDE78BB2C}">
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{4959EBF7-7F3D-47A5-ADB4-B3E1CA1B2805}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -32,561 +32,24 @@
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Data Flow Task"
+      DTS:refId="Package\SegmentacionClientesDFT"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
       DTS:DTSID="{3760360D-32B9-4F89-93CD-011ADBDEB7CB}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Data Flow Task">
+      DTS:ObjectName="SegmentacionClientesDFT">
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
           version="1">
           <components>
             <component
-              refId="Package\Data Flow Task\Data Conversion"
-              componentClassID="Microsoft.DataConvert"
-              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Data Conversion"
-              name="Data Conversion"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
-                  name="Data Conversion Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[YearlyIncome]"
-                      cachedDataType="cy"
-                      cachedName="YearlyIncome"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[YearlyIncome]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[TotalGastado]"
-                      cachedDataType="cy"
-                      cachedName="TotalGastado"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalGastado]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[PromedioCompra]"
-                      cachedDataType="cy"
-                      cachedName="PromedioCompra"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[PromedioCompra]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]"
-                  exclusionGroup="1"
-                  name="Data Conversion Output"
-                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[YearlyIncomeFloat]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[YearlyIncomeFloat]"
-                      name="YearlyIncomeFloat"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[YearlyIncome]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[TotalGastadoFloat]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[TotalGastadoFloat]"
-                      name="TotalGastadoFloat"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalGastado]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[PromedioCompraFloat]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[PromedioCompraFloat]"
-                      name="PromedioCompraFloat"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[PromedioCompra]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Data Conversion Error Output"
-                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Data Flow Task\Derived Column"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Derived Column"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[BirthDate]"
-                      cachedDataType="dbDate"
-                      cachedName="BirthDate"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[BirthDate]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Edad]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Edad]"
-                      name="Edad"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[DATEDIFF]("Year",#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[BirthDate]},[GETDATE]())</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">DATEDIFF("Year",BirthDate,GETDATE())</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Data Flow Task\Derived Column 1"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Derived Column 1"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[Education]"
-                      cachedDataType="wstr"
-                      cachedLength="40"
-                      cachedName="Education"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Education]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Education]}) ? "No Definido" : #{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Education]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">ISNULL(Education) ? "No Definido" : Education</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[Occupation]"
-                      cachedDataType="wstr"
-                      cachedLength="100"
-                      cachedName="Occupation"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Occupation]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Occupation]}) ? "No Definido" : #{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Occupation]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">ISNULL(Occupation) ? "No Definido" : Occupation</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[MaritalStatus]"
-                      cachedDataType="wstr"
-                      cachedLength="1"
-                      cachedName="MaritalStatus"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[MaritalStatus]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[MaritalStatus]}) ? "N" : #{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[MaritalStatus]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">ISNULL(MaritalStatus) ? "N" : MaritalStatus</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[TotalCompras]"
-                      cachedDataType="i4"
-                      cachedName="TotalCompras"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalCompras]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalCompras]}) ? 0 : #{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalCompras]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">ISNULL(TotalCompras) ? 0 : TotalCompras</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[Edad]"
-                      cachedDataType="i4"
-                      cachedName="Edad"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Edad]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Edad]}) ? 0 : #{Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Edad]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">ISNULL(Edad) ? 0 : Edad</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[YearlyIncomeFloat]"
-                      cachedDataType="r8"
-                      cachedName="YearlyIncomeFloat"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[YearlyIncomeFloat]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[YearlyIncomeFloat]}) ? 0.0 : #{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[YearlyIncomeFloat]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">ISNULL(YearlyIncomeFloat) ? 0.0 : YearlyIncomeFloat</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[TotalGastadoFloat]"
-                      cachedDataType="r8"
-                      cachedName="TotalGastadoFloat"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[TotalGastadoFloat]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[TotalGastadoFloat]}) ? 0.0 : #{Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[TotalGastadoFloat]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">ISNULL(TotalGastadoFloat) ? 0.0 : TotalGastadoFloat</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[Gender]"
-                      cachedDataType="wstr"
-                      cachedLength="1"
-                      cachedName="Gender"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Gender]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Gender]}) ? "N" : #{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Gender]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">ISNULL(Gender) ? "N" : Gender</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[HouseOwnerFlag]"
-                      cachedDataType="wstr"
-                      cachedLength="1"
-                      cachedName="HouseOwnerFlag"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[HouseOwnerFlag]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[HouseOwnerFlag]}) ? "0" : #{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[HouseOwnerFlag]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">ISNULL(HouseOwnerFlag) ? "0" : HouseOwnerFlag</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[NumberCarsOwned]"
-                      cachedDataType="ui1"
-                      cachedName="NumberCarsOwned"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberCarsOwned]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberCarsOwned]}) ? 0 : #{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberCarsOwned]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">ISNULL(NumberCarsOwned) ? 0 : NumberCarsOwned</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[TotalChildren]"
-                      cachedDataType="ui1"
-                      cachedName="TotalChildren"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalChildren]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalChildren]}) ? 0 : #{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalChildren]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">ISNULL(TotalChildren) ? 0 : TotalChildren</property>
-                      </properties>
-                    </inputColumn>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input].Columns[NumberChildrenAtHome]"
-                      cachedDataType="ui1"
-                      cachedName="NumberChildrenAtHome"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberChildrenAtHome]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[ISNULL](#{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberChildrenAtHome]}) ? 0 : #{Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberChildrenAtHome]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">ISNULL(NumberChildrenAtHome) ? 0 : NumberChildrenAtHome</property>
-                      </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Data Flow Task\OLE DB Destination"
+              refId="Package\SegmentacionClientesDFT\BD DestinationETL"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="OLE DB Destination"
+              name="BD DestinationETL"
               usesDispositions="true"
               version="4">
               <properties>
@@ -639,7 +102,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                  refId="Package\SegmentacionClientesDFT\BD DestinationETL.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[CRUZJEFF225.DestinationETL]"
                   connectionManagerRefId="Package.ConnectionManagers[CRUZJEFF225.DestinationETL]"
                   description="The OLE DB runtime connection used to access the database."
@@ -647,175 +110,175 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CustomerKey]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].Columns[CustomerKey]"
                       cachedDataType="i4"
                       cachedName="CustomerKey"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerKey]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[CustomerKey]" />
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[CustomerKey]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[CustomerKey]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Gender]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].Columns[Gender]"
                       cachedDataType="wstr"
                       cachedLength="1"
                       cachedName="Gender"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Gender]" />
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[Gender]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Education]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].Columns[Education]"
                       cachedDataType="wstr"
                       cachedLength="40"
                       cachedName="Education"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Education]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Education]" />
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[Education]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[Education]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Occupation]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].Columns[Occupation]"
                       cachedDataType="wstr"
                       cachedLength="100"
                       cachedName="Occupation"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Occupation]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Occupation]" />
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[Occupation]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[Occupation]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[HouseOwnerFlag]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].Columns[HouseOwnerFlag]"
                       cachedDataType="wstr"
                       cachedLength="1"
                       cachedName="HouseOwnerFlag"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HouseOwnerFlag]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[HouseOwnerFlag]" />
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[HouseOwnerFlag]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[HouseOwnerFlag]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NumberCarsOwned]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].Columns[NumberCarsOwned]"
                       cachedDataType="ui1"
                       cachedName="NumberCarsOwned"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NumberCarsOwned]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberCarsOwned]" />
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[NumberCarsOwned]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[NumberCarsOwned]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TotalChildren]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].Columns[TotalChildren]"
                       cachedDataType="ui1"
                       cachedName="TotalChildren"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalChildren]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalChildren]" />
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[TotalChildren]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[TotalChildren]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NumberChildrenAtHome]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].Columns[NumberChildrenAtHome]"
                       cachedDataType="ui1"
                       cachedName="NumberChildrenAtHome"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NumberChildrenAtHome]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberChildrenAtHome]" />
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[NumberChildrenAtHome]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[NumberChildrenAtHome]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MaritalStatus]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].Columns[MaritalStatus]"
                       cachedDataType="wstr"
                       cachedLength="1"
                       cachedName="MaritalStatus"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MaritalStatus]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[MaritalStatus]" />
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[MaritalStatus]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[MaritalStatus]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CustomerType]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].Columns[CustomerType]"
                       cachedDataType="wstr"
                       cachedLength="15"
                       cachedName="CustomerType"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerType]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[CustomerType]" />
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[CustomerType]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[CustomerType]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TotalCompras]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].Columns[TotalCompras]"
                       cachedDataType="i4"
                       cachedName="TotalCompras"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalCompras]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalCompras]" />
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[TotalCompras]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[TotalCompras]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PromedioCompraFloat]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].Columns[PromedioCompraFloat]"
                       cachedDataType="r8"
                       cachedName="PromedioCompraFloat"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PromedioCompra]"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[PromedioCompraFloat]" />
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[PromedioCompra]"
+                      lineageId="Package\SegmentacionClientesDFT\Conversion Datos.Outputs[Data Conversion Output].Columns[PromedioCompraFloat]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TotalGastadoFloat]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].Columns[TotalGastadoFloat]"
                       cachedDataType="r8"
                       cachedName="TotalGastadoFloat"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalGastado]"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[TotalGastadoFloat]" />
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[TotalGastado]"
+                      lineageId="Package\SegmentacionClientesDFT\Conversion Datos.Outputs[Data Conversion Output].Columns[TotalGastadoFloat]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[YearlyIncomeFloat]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].Columns[YearlyIncomeFloat]"
                       cachedDataType="r8"
                       cachedName="YearlyIncomeFloat"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[YearlyIncome]"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[YearlyIncomeFloat]" />
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[YearlyIncome]"
+                      lineageId="Package\SegmentacionClientesDFT\Conversion Datos.Outputs[Data Conversion Output].Columns[YearlyIncomeFloat]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Edad]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].Columns[Edad]"
                       cachedDataType="i4"
                       cachedName="Edad"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Edad]"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Edad]" />
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[Edad]"
+                      lineageId="Package\SegmentacionClientesDFT\Calculo Edad Cliente.Outputs[Derived Column Output].Columns[Edad]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerKey]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[CustomerKey]"
                       dataType="i4"
                       name="CustomerKey" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
                       dataType="wstr"
                       length="1"
                       name="Gender" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Education]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[Education]"
                       dataType="wstr"
                       length="40"
                       name="Education" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Occupation]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[Occupation]"
                       dataType="wstr"
                       length="100"
                       name="Occupation" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HouseOwnerFlag]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[HouseOwnerFlag]"
                       dataType="wstr"
                       length="1"
                       name="HouseOwnerFlag" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[YearlyIncome]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[YearlyIncome]"
                       dataType="r8"
                       name="YearlyIncome" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NumberCarsOwned]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[NumberCarsOwned]"
                       dataType="ui1"
                       name="NumberCarsOwned" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalChildren]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[TotalChildren]"
                       dataType="ui1"
                       name="TotalChildren" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NumberChildrenAtHome]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[NumberChildrenAtHome]"
                       dataType="ui1"
                       name="NumberChildrenAtHome" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Edad]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[Edad]"
                       dataType="i4"
                       name="Edad" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MaritalStatus]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[MaritalStatus]"
                       dataType="wstr"
                       length="1"
                       name="MaritalStatus" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerType]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[CustomerType]"
                       dataType="wstr"
                       length="15"
                       name="CustomerType" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalCompras]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[TotalCompras]"
                       dataType="i4"
                       name="TotalCompras" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TotalGastado]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[TotalGastado]"
                       dataType="r8"
                       name="TotalGastado" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PromedioCompra]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input].ExternalColumns[PromedioCompra]"
                       dataType="r8"
                       name="PromedioCompra" />
                   </externalMetadataColumns>
@@ -823,22 +286,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\SegmentacionClientesDFT\BD DestinationETL.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\SegmentacionClientesDFT\BD DestinationETL.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\SegmentacionClientesDFT\BD DestinationETL.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\SegmentacionClientesDFT\BD DestinationETL.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -847,11 +310,91 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\OLE DB Source"
+              refId="Package\SegmentacionClientesDFT\Calculo Edad Cliente"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Calculo Edad Cliente"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\SegmentacionClientesDFT\Calculo Edad Cliente.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\SegmentacionClientesDFT\Calculo Edad Cliente.Inputs[Derived Column Input].Columns[BirthDate]"
+                      cachedDataType="dbDate"
+                      cachedName="BirthDate"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[BirthDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\SegmentacionClientesDFT\Calculo Edad Cliente.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\SegmentacionClientesDFT\Calculo Edad Cliente.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SegmentacionClientesDFT\Calculo Edad Cliente.Outputs[Derived Column Output].Columns[Edad]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\SegmentacionClientesDFT\Calculo Edad Cliente.Outputs[Derived Column Output].Columns[Edad]"
+                      name="Edad"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[DATEDIFF]("Year",#{Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[BirthDate]},[GETDATE]())</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DATEDIFF("Year",BirthDate,GETDATE())</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\SegmentacionClientesDFT\Calculo Edad Cliente.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\SegmentacionClientesDFT\Calculo Edad Cliente.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SegmentacionClientesDFT\Calculo Edad Cliente.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SegmentacionClientesDFT\Calculo Edad Cliente.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SegmentacionClientesDFT\Calculo Edad Cliente.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SegmentacionClientesDFT\Calculo Edad Cliente.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\SegmentacionClientesDFT\CONTOSO BI"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
-              name="OLE DB Source"
+              name="CONTOSO BI"
               usesDispositions="true"
               version="7">
               <properties>
@@ -920,7 +463,7 @@ GROUP BY
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
+                  refId="Package\SegmentacionClientesDFT\CONTOSO BI.Connections[OleDbConnection]"
                   connectionManagerID="{6B8EDAC8-EA5A-47E5-B77C-43AB1C9DCF4E}:external"
                   connectionManagerRefId="Project.ConnectionManagers[CRUZJEFF225.Spanish 1]"
                   description="The OLE DB runtime connection used to access the database."
@@ -928,359 +471,816 @@ GROUP BY
               </connections>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]"
+                  refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[CustomerKey]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[CustomerKey]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustomerKey]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[CustomerKey]"
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[CustomerKey]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[CustomerKey]"
                       name="CustomerKey"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[FirstName]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
                       length="50"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[FirstName]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[FirstName]"
                       name="FirstName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[LastName]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[LastName]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
                       length="50"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[LastName]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[LastName]"
                       name="LastName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Gender]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[Gender]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
                       length="1"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Gender]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[Gender]"
                       name="Gender"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Education]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[Education]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Education]"
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[Education]"
                       length="40"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Education]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[Education]"
                       name="Education"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Occupation]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[Occupation]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Occupation]"
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[Occupation]"
                       length="100"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Occupation]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[Occupation]"
                       name="Occupation"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[HouseOwnerFlag]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[HouseOwnerFlag]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HouseOwnerFlag]"
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[HouseOwnerFlag]"
                       length="1"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[HouseOwnerFlag]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[HouseOwnerFlag]"
                       name="HouseOwnerFlag"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[YearlyIncome]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[YearlyIncome]"
                       dataType="cy"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[YearlyIncome]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[YearlyIncome]"
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[YearlyIncome]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[YearlyIncome]"
                       name="YearlyIncome"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberCarsOwned]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[NumberCarsOwned]"
                       dataType="ui1"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NumberCarsOwned]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberCarsOwned]"
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[NumberCarsOwned]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[NumberCarsOwned]"
                       name="NumberCarsOwned"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalChildren]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[TotalChildren]"
                       dataType="ui1"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalChildren]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalChildren]"
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[TotalChildren]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[TotalChildren]"
                       name="TotalChildren"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberChildrenAtHome]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[NumberChildrenAtHome]"
                       dataType="ui1"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NumberChildrenAtHome]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[NumberChildrenAtHome]"
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[NumberChildrenAtHome]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[NumberChildrenAtHome]"
                       name="NumberChildrenAtHome"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[BirthDate]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[BirthDate]"
                       dataType="dbDate"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BirthDate]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[BirthDate]"
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[BirthDate]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[BirthDate]"
                       name="BirthDate"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[MaritalStatus]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[MaritalStatus]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MaritalStatus]"
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[MaritalStatus]"
                       length="1"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[MaritalStatus]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[MaritalStatus]"
                       name="MaritalStatus"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[CustomerType]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[CustomerType]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustomerType]"
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[CustomerType]"
                       length="15"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[CustomerType]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[CustomerType]"
                       name="CustomerType"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalCompras]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[TotalCompras]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalCompras]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalCompras]"
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[TotalCompras]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[TotalCompras]"
                       name="TotalCompras"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalGastado]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[TotalGastado]"
                       dataType="cy"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalGastado]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TotalGastado]"
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[TotalGastado]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[TotalGastado]"
                       name="TotalGastado"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[PromedioCompra]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[PromedioCompra]"
                       dataType="cy"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PromedioCompra]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[PromedioCompra]"
+                      externalMetadataColumnId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[PromedioCompra]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[PromedioCompra]"
                       name="PromedioCompra"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustomerKey]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[CustomerKey]"
                       dataType="i4"
                       name="CustomerKey" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
                       dataType="wstr"
                       length="50"
                       name="FirstName" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
                       dataType="wstr"
                       length="50"
                       name="LastName" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
                       dataType="wstr"
                       length="1"
                       name="Gender" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Education]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[Education]"
                       dataType="wstr"
                       length="40"
                       name="Education" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Occupation]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[Occupation]"
                       dataType="wstr"
                       length="100"
                       name="Occupation" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[HouseOwnerFlag]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[HouseOwnerFlag]"
                       dataType="wstr"
                       length="1"
                       name="HouseOwnerFlag" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[YearlyIncome]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[YearlyIncome]"
                       dataType="cy"
                       name="YearlyIncome" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NumberCarsOwned]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[NumberCarsOwned]"
                       dataType="ui1"
                       name="NumberCarsOwned" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalChildren]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[TotalChildren]"
                       dataType="ui1"
                       name="TotalChildren" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NumberChildrenAtHome]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[NumberChildrenAtHome]"
                       dataType="ui1"
                       name="NumberChildrenAtHome" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BirthDate]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[BirthDate]"
                       dataType="dbDate"
                       name="BirthDate" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MaritalStatus]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[MaritalStatus]"
                       dataType="wstr"
                       length="1"
                       name="MaritalStatus" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustomerType]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[CustomerType]"
                       dataType="wstr"
                       length="15"
                       name="CustomerType" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalCompras]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[TotalCompras]"
                       dataType="i4"
                       name="TotalCompras" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TotalGastado]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[TotalGastado]"
                       dataType="cy"
                       name="TotalGastado" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PromedioCompra]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].ExternalColumns[PromedioCompra]"
                       dataType="cy"
                       name="PromedioCompra" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CustomerKey]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[CustomerKey]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CustomerKey]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[CustomerKey]"
                       name="CustomerKey" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[FirstName]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[FirstName]"
                       name="FirstName" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[LastName]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[LastName]"
                       name="LastName" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[Gender]"
                       dataType="wstr"
                       length="1"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[Gender]"
                       name="Gender" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Education]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[Education]"
                       dataType="wstr"
                       length="40"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Education]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[Education]"
                       name="Education" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Occupation]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[Occupation]"
                       dataType="wstr"
                       length="100"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Occupation]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[Occupation]"
                       name="Occupation" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HouseOwnerFlag]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[HouseOwnerFlag]"
                       dataType="wstr"
                       length="1"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[HouseOwnerFlag]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[HouseOwnerFlag]"
                       name="HouseOwnerFlag" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[YearlyIncome]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[YearlyIncome]"
                       dataType="cy"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[YearlyIncome]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[YearlyIncome]"
                       name="YearlyIncome" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NumberCarsOwned]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[NumberCarsOwned]"
                       dataType="ui1"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NumberCarsOwned]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[NumberCarsOwned]"
                       name="NumberCarsOwned" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalChildren]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[TotalChildren]"
                       dataType="ui1"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalChildren]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[TotalChildren]"
                       name="TotalChildren" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NumberChildrenAtHome]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[NumberChildrenAtHome]"
                       dataType="ui1"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NumberChildrenAtHome]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[NumberChildrenAtHome]"
                       name="NumberChildrenAtHome" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BirthDate]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[BirthDate]"
                       dataType="dbDate"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BirthDate]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[BirthDate]"
                       name="BirthDate" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MaritalStatus]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[MaritalStatus]"
                       dataType="wstr"
                       length="1"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MaritalStatus]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[MaritalStatus]"
                       name="MaritalStatus" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CustomerType]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[CustomerType]"
                       dataType="wstr"
                       length="15"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CustomerType]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[CustomerType]"
                       name="CustomerType" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalCompras]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[TotalCompras]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalCompras]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[TotalCompras]"
                       name="TotalCompras" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalGastado]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[TotalGastado]"
                       dataType="cy"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TotalGastado]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[TotalGastado]"
                       name="TotalGastado" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PromedioCompra]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[PromedioCompra]"
                       dataType="cy"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PromedioCompra]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[PromedioCompra]"
                       name="PromedioCompra" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\SegmentacionClientesDFT\Conversion Datos"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Conversion Datos"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\SegmentacionClientesDFT\Conversion Datos.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\SegmentacionClientesDFT\Conversion Datos.Inputs[Data Conversion Input].Columns[YearlyIncome]"
+                      cachedDataType="cy"
+                      cachedName="YearlyIncome"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[YearlyIncome]" />
+                    <inputColumn
+                      refId="Package\SegmentacionClientesDFT\Conversion Datos.Inputs[Data Conversion Input].Columns[TotalGastado]"
+                      cachedDataType="cy"
+                      cachedName="TotalGastado"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[TotalGastado]" />
+                    <inputColumn
+                      refId="Package\SegmentacionClientesDFT\Conversion Datos.Inputs[Data Conversion Input].Columns[PromedioCompra]"
+                      cachedDataType="cy"
+                      cachedName="PromedioCompra"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[PromedioCompra]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\SegmentacionClientesDFT\Conversion Datos.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\SegmentacionClientesDFT\Conversion Datos.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SegmentacionClientesDFT\Conversion Datos.Outputs[Data Conversion Output].Columns[YearlyIncomeFloat]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\SegmentacionClientesDFT\Conversion Datos.Outputs[Data Conversion Output].Columns[YearlyIncomeFloat]"
+                      name="YearlyIncomeFloat"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[YearlyIncome]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\SegmentacionClientesDFT\Conversion Datos.Outputs[Data Conversion Output].Columns[TotalGastadoFloat]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\SegmentacionClientesDFT\Conversion Datos.Outputs[Data Conversion Output].Columns[TotalGastadoFloat]"
+                      name="TotalGastadoFloat"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[TotalGastado]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\SegmentacionClientesDFT\Conversion Datos.Outputs[Data Conversion Output].Columns[PromedioCompraFloat]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\SegmentacionClientesDFT\Conversion Datos.Outputs[Data Conversion Output].Columns[PromedioCompraFloat]"
+                      name="PromedioCompraFloat"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[PromedioCompra]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\SegmentacionClientesDFT\Conversion Datos.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\SegmentacionClientesDFT\Conversion Datos.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SegmentacionClientesDFT\Conversion Datos.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SegmentacionClientesDFT\Conversion Datos.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SegmentacionClientesDFT\Conversion Datos.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SegmentacionClientesDFT\Conversion Datos.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\SegmentacionClientesDFT\Reemplazando Nulos"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Reemplazando Nulos"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\SegmentacionClientesDFT\Reemplazando Nulos.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\SegmentacionClientesDFT\Reemplazando Nulos.Inputs[Derived Column Input].Columns[Education]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="Education"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[Education]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[Education]}) ? "No Definido" : #{Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[Education]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(Education) ? "No Definido" : Education</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SegmentacionClientesDFT\Reemplazando Nulos.Inputs[Derived Column Input].Columns[Occupation]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Occupation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[Occupation]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[Occupation]}) ? "No Definido" : #{Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[Occupation]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(Occupation) ? "No Definido" : Occupation</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SegmentacionClientesDFT\Reemplazando Nulos.Inputs[Derived Column Input].Columns[MaritalStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="MaritalStatus"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[MaritalStatus]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[MaritalStatus]}) ? "N" : #{Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[MaritalStatus]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(MaritalStatus) ? "N" : MaritalStatus</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SegmentacionClientesDFT\Reemplazando Nulos.Inputs[Derived Column Input].Columns[TotalCompras]"
+                      cachedDataType="i4"
+                      cachedName="TotalCompras"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[TotalCompras]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[TotalCompras]}) ? 0 : #{Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[TotalCompras]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(TotalCompras) ? 0 : TotalCompras</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SegmentacionClientesDFT\Reemplazando Nulos.Inputs[Derived Column Input].Columns[Edad]"
+                      cachedDataType="i4"
+                      cachedName="Edad"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\SegmentacionClientesDFT\Calculo Edad Cliente.Outputs[Derived Column Output].Columns[Edad]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\SegmentacionClientesDFT\Calculo Edad Cliente.Outputs[Derived Column Output].Columns[Edad]}) ? 0 : #{Package\SegmentacionClientesDFT\Calculo Edad Cliente.Outputs[Derived Column Output].Columns[Edad]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(Edad) ? 0 : Edad</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SegmentacionClientesDFT\Reemplazando Nulos.Inputs[Derived Column Input].Columns[YearlyIncomeFloat]"
+                      cachedDataType="r8"
+                      cachedName="YearlyIncomeFloat"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\SegmentacionClientesDFT\Conversion Datos.Outputs[Data Conversion Output].Columns[YearlyIncomeFloat]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\SegmentacionClientesDFT\Conversion Datos.Outputs[Data Conversion Output].Columns[YearlyIncomeFloat]}) ? 0.0 : #{Package\SegmentacionClientesDFT\Conversion Datos.Outputs[Data Conversion Output].Columns[YearlyIncomeFloat]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(YearlyIncomeFloat) ? 0.0 : YearlyIncomeFloat</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SegmentacionClientesDFT\Reemplazando Nulos.Inputs[Derived Column Input].Columns[TotalGastadoFloat]"
+                      cachedDataType="r8"
+                      cachedName="TotalGastadoFloat"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\SegmentacionClientesDFT\Conversion Datos.Outputs[Data Conversion Output].Columns[TotalGastadoFloat]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\SegmentacionClientesDFT\Conversion Datos.Outputs[Data Conversion Output].Columns[TotalGastadoFloat]}) ? 0.0 : #{Package\SegmentacionClientesDFT\Conversion Datos.Outputs[Data Conversion Output].Columns[TotalGastadoFloat]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(TotalGastadoFloat) ? 0.0 : TotalGastadoFloat</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SegmentacionClientesDFT\Reemplazando Nulos.Inputs[Derived Column Input].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Gender"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[Gender]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[Gender]}) ? "N" : #{Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[Gender]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(Gender) ? "N" : Gender</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SegmentacionClientesDFT\Reemplazando Nulos.Inputs[Derived Column Input].Columns[HouseOwnerFlag]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="HouseOwnerFlag"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[HouseOwnerFlag]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[HouseOwnerFlag]}) ? "0" : #{Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[HouseOwnerFlag]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(HouseOwnerFlag) ? "0" : HouseOwnerFlag</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SegmentacionClientesDFT\Reemplazando Nulos.Inputs[Derived Column Input].Columns[NumberCarsOwned]"
+                      cachedDataType="ui1"
+                      cachedName="NumberCarsOwned"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[NumberCarsOwned]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[NumberCarsOwned]}) ? 0 : #{Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[NumberCarsOwned]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(NumberCarsOwned) ? 0 : NumberCarsOwned</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SegmentacionClientesDFT\Reemplazando Nulos.Inputs[Derived Column Input].Columns[TotalChildren]"
+                      cachedDataType="ui1"
+                      cachedName="TotalChildren"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[TotalChildren]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[TotalChildren]}) ? 0 : #{Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[TotalChildren]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(TotalChildren) ? 0 : TotalChildren</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\SegmentacionClientesDFT\Reemplazando Nulos.Inputs[Derived Column Input].Columns[NumberChildrenAtHome]"
+                      cachedDataType="ui1"
+                      cachedName="NumberChildrenAtHome"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[NumberChildrenAtHome]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[NumberChildrenAtHome]}) ? 0 : #{Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output].Columns[NumberChildrenAtHome]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(NumberChildrenAtHome) ? 0 : NumberChildrenAtHome</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\SegmentacionClientesDFT\Reemplazando Nulos.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\SegmentacionClientesDFT\Reemplazando Nulos.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\SegmentacionClientesDFT\Reemplazando Nulos.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\SegmentacionClientesDFT\Reemplazando Nulos.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SegmentacionClientesDFT\Reemplazando Nulos.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SegmentacionClientesDFT\Reemplazando Nulos.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SegmentacionClientesDFT\Reemplazando Nulos.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SegmentacionClientesDFT\Reemplazando Nulos.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1291,25 +1291,25 @@ GROUP BY
           </components>
           <paths>
             <path
-              refId="Package\Data Flow Task.Paths[Data Conversion Output]"
-              endId="Package\Data Flow Task\Derived Column 1.Inputs[Derived Column Input]"
+              refId="Package\SegmentacionClientesDFT.Paths[Data Conversion Output]"
+              endId="Package\SegmentacionClientesDFT\Reemplazando Nulos.Inputs[Derived Column Input]"
               name="Data Conversion Output"
-              startId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]" />
+              startId="Package\SegmentacionClientesDFT\Conversion Datos.Outputs[Data Conversion Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output]"
-              endId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+              refId="Package\SegmentacionClientesDFT.Paths[Derived Column Output]"
+              endId="Package\SegmentacionClientesDFT\Conversion Datos.Inputs[Data Conversion Input]"
               name="Derived Column Output"
-              startId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]" />
+              startId="Package\SegmentacionClientesDFT\Calculo Edad Cliente.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Derived Column Output1]"
-              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              refId="Package\SegmentacionClientesDFT.Paths[Derived Column Output1]"
+              endId="Package\SegmentacionClientesDFT\BD DestinationETL.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
-              startId="Package\Data Flow Task\Derived Column 1.Outputs[Derived Column Output]" />
+              startId="Package\SegmentacionClientesDFT\Reemplazando Nulos.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
-              endId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+              refId="Package\SegmentacionClientesDFT.Paths[OLE DB Source Output]"
+              endId="Package\SegmentacionClientesDFT\Calculo Edad Cliente.Inputs[Derived Column Input]"
               name="OLE DB Source Output"
-              startId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]" />
+              startId="Package\SegmentacionClientesDFT\CONTOSO BI.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1328,63 +1328,63 @@ GROUP BY
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="151,42"
-          Id="Package\Data Flow Task"
+          Size="201,42"
+          Id="Package\SegmentacionClientesDFT"
           TopLeft="482.5,53.5" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Data Flow Task">
+    design-time-name="Package\SegmentacionClientesDFT">
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150,42"
-          Id="Package\Data Flow Task\OLE DB Source"
-          TopLeft="448,68" />
+          Size="177,42"
+          Id="Package\SegmentacionClientesDFT\Reemplazando Nulos"
+          TopLeft="145,345" />
         <NodeLayout
-          Size="156,42"
-          Id="Package\Data Flow Task\Data Conversion"
-          TopLeft="462,192" />
+          Size="166,42"
+          Id="Package\SegmentacionClientesDFT\BD DestinationETL"
+          TopLeft="459,465" />
         <NodeLayout
-          Size="171,42"
-          Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="449,390" />
+          Size="175,42"
+          Id="Package\SegmentacionClientesDFT\Calculo Edad Cliente"
+          TopLeft="806,195" />
         <NodeLayout
-          Size="154,42"
-          Id="Package\Data Flow Task\Derived Column"
-          TopLeft="801,136" />
+          Size="161,42"
+          Id="Package\SegmentacionClientesDFT\Conversion Datos"
+          TopLeft="475,261" />
         <NodeLayout
-          Size="163,42"
-          Id="Package\Data Flow Task\Derived Column 1"
-          TopLeft="239,270" />
+          Size="141,42"
+          Id="Package\SegmentacionClientesDFT\CONTOSO BI"
+          TopLeft="452,119" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="523,110">
+          Id="Package\SegmentacionClientesDFT.Paths[OLE DB Source Output]"
+          TopLeft="522.5,161">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="355,26"
+              EndConnector="371,34"
               Start="0,0"
-              End="355,18.5">
+              End="371,26.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,9" />
+                    End="0,13" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,9"
-                    Point2="0,13"
-                    Point3="4,13" />
+                    Point1="0,13"
+                    Point2="0,17"
+                    Point3="4,17" />
                   <mssgle:LineSegment
-                    End="351,13" />
+                    End="367,17" />
                   <mssgle:CubicBezierSegment
-                    Point1="351,13"
-                    Point2="355,13"
-                    Point3="355,17" />
+                    Point1="367,17"
+                    Point2="371,17"
+                    Point3="371,21" />
                   <mssgle:LineSegment
-                    End="355,18.5" />
+                    End="371,26.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1394,82 +1394,14 @@ GROUP BY
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output]"
-          TopLeft="801,157">
+          Id="Package\SegmentacionClientesDFT.Paths[Derived Column Output1]"
+          TopLeft="233.5,387">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-183,56"
+              EndConnector="308.5,78"
               Start="0,0"
-              End="-175.5,56">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-87.5,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-87.5,0"
-                    Point2="-91.5,0"
-                    Point3="-91.5,4" />
-                  <mssgle:LineSegment
-                    End="-91.5,52" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-91.5,52"
-                    Point2="-91.5,56"
-                    Point3="-95.5,56" />
-                  <mssgle:LineSegment
-                    End="-175.5,56" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
-          TopLeft="540,234">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-219.5,36"
-              Start="0,0"
-              End="-219.5,28.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,14" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,14"
-                    Point2="0,18"
-                    Point3="-4,18" />
-                  <mssgle:LineSegment
-                    End="-215.5,18" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-215.5,18"
-                    Point2="-219.5,18"
-                    Point3="-219.5,22" />
-                  <mssgle:LineSegment
-                    End="-219.5,28.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Derived Column Output1]"
-          TopLeft="320.5,312">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="214,78"
-              Start="0,0"
-              End="214,70.5">
+              End="308.5,70.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -1480,13 +1412,13 @@ GROUP BY
                     Point2="0,39"
                     Point3="4,39" />
                   <mssgle:LineSegment
-                    End="210,39" />
+                    End="304.5,39" />
                   <mssgle:CubicBezierSegment
-                    Point1="210,39"
-                    Point2="214,39"
-                    Point3="214,43" />
+                    Point1="304.5,39"
+                    Point2="308.5,39"
+                    Point3="308.5,43" />
                   <mssgle:LineSegment
-                    End="214,70.5" />
+                    End="308.5,70.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1495,19 +1427,86 @@ GROUP BY
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SegmentacionClientesDFT.Paths[Derived Column Output]"
+          TopLeft="893.5,237">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-338,24"
+              Start="0,0"
+              End="-338,16.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8"
+                    Point2="0,12"
+                    Point3="-4,12" />
+                  <mssgle:LineSegment
+                    End="-334,12" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-334,12"
+                    Point2="-338,12"
+                    Point3="-338,16" />
+                  <mssgle:LineSegment
+                    End="-338,16.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SegmentacionClientesDFT.Paths[Data Conversion Output]"
+          TopLeft="555.5,303">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-322,42"
+              Start="0,0"
+              End="-322,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17"
+                    Point2="0,21"
+                    Point3="-4,21" />
+                  <mssgle:LineSegment
+                    End="-318,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-318,21"
+                    Point2="-322,21"
+                    Point3="-322,25" />
+                  <mssgle:LineSegment
+                    End="-322,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="SEGMENTACION CLIENTES - ETL"
+          ParentId="Package\SegmentacionClientesDFT"
+          FontInfo="{assembly:Null}"
+          Size="213,60"
+          Id="48301cde-178e-4daf-8290-48048ba089f9"
+          TopLeft="428,42" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\OLE DB Destination">
+    design-time-name="Package\SegmentacionClientesDFT\BD DestinationETL">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1516,6 +1515,14 @@ GROUP BY
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SegmentacionClientesDFT\CONTOSO BI">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
